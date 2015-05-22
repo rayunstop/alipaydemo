@@ -3,8 +3,8 @@ package executor
 import (
 	"errors"
 	"fmt"
-	"github.com/alipay-sdk/constants"
-	"github.com/alipay-sdk/model"
+	"github.com/rui2014/alipaydemo/constants"
+	"github.com/rui2014/alipaydemo/model"
 )
 
 // Executor 事件执行器接口

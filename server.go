@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/alipay-sdk/gateway"
+	"github.com/rui2014/alipaydemo/gateway"
 	"log"
 	"net/http"
 )
