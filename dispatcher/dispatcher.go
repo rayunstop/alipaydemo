@@ -3,9 +3,9 @@ package dispatcher
 import (
 	"encoding/xml"
 	"errors"
-	"github.com/rui2014/alipaydemo/constants"
-	"github.com/rui2014/alipaydemo/executor"
-	"github.com/rui2014/alipaydemo/model"
+	"github.com/z-ray/alipaydemo/constants"
+	"github.com/z-ray/alipaydemo/executor"
+	"github.com/z-ray/alipaydemo/model"
 	"net/url"
 )
 

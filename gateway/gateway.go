@@ -2,9 +2,9 @@ package gateway
 
 import (
 	"fmt"
-	"github.com/rui2014/alipay/api/sign"
-	"github.com/rui2014/alipaydemo/constants"
-	"github.com/rui2014/alipaydemo/dispatcher"
+	"github.com/z-ray/alipay/api/sign"
+	"github.com/z-ray/alipaydemo/constants"
+	"github.com/z-ray/alipaydemo/dispatcher"
 	"io/ioutil"
 	"log"
 	"net/http"
