@@ -1,15 +1,16 @@
 package main
 
 import (
-	"github.com/rui2014/alipaydemo/gateway"
-	"log"
+	"github.com/z-ray/alipaydemo/gateway"
+	"github.com/z-ray/log"
 	"net/http"
 )
 
 func main() {
 
+	log.SetOutputLevel(log.Ldebug)
 	addr := ":8080"
-	log.Printf("alipay service is running on %s", addr)
+	log.Debugf("alipay service is running on %s", addr)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusForbidden)

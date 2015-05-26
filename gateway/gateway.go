@@ -3,10 +3,11 @@ package gateway
 import (
 	"fmt"
 	signature "github.com/z-ray/alipay/api/sign"
+	"github.com/z-ray/alipay/api/utils"
 	"github.com/z-ray/alipaydemo/constants"
 	"github.com/z-ray/alipaydemo/dispatcher"
+	"github.com/z-ray/log"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 )
@@ -37,19 +38,20 @@ func GatewayService(w http.ResponseWriter, r *http.Request) {
 	body := utils.PrepareContent(params)
 
 	// 验签
-	err = signature.Verfiy(body, sign, aliPubKey)
+	err = signature.Verfiy(body, sign, constants.AliPubKey)
 	if err != nil {
 		log.Errorf("verfiy wrong: %s", err)
 	}
 
-	// do something...
-	// TODO router
-	content := "<success>true</success><biz_content>" + cusPubKey + "</biz_content>"
-
-	c, _ := dispatcher.Executor(values)
+	// 执行业务
+	c, err := dispatcher.Executor(params)
+	if err != nil {
+		w.Write([]byte(err.Error()))
+	}
+	content := c.Execute()
 
 	// 签名应答
-	signed, err := signature.RsaSign(content, cusPrivKey)
+	signed, err := signature.RsaSign(content, constants.CusPrivKey)
 	if err != nil {
 		log.Error(err)
 	}

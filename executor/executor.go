@@ -1,17 +1,16 @@
 package executor
 
 import (
-	"errors"
 	"fmt"
-	"github.com/rui2014/alipaydemo/constants"
-	"github.com/rui2014/alipaydemo/model"
+	"github.com/z-ray/alipaydemo/constants"
+	"github.com/z-ray/alipaydemo/model"
 )
 
 // Executor 事件执行器接口
 type Executor interface {
 
 	// 执行方法
-	execute() (string, error)
+	Execute() string
 }
 
 // AlipayVerifyExecutor 网关验证执行器
@@ -23,18 +22,13 @@ type AlipayChatTextExecutor struct {
 }
 
 // execute 网关验证
-func (e AlipayVerifyExecutor) execute() (string, error) {
+func (e AlipayVerifyExecutor) Execute() string {
 	bulider := "<success>true</success><biz_content>%s</biz_content>"
 	return fmt.Sprintf(bulider, constants.AliPubKey)
 }
 
 // execute 图文消息
-func (e AlipayChatTextExecutor) execute() (string, error) {
-	if e.BizContent == nil {
-		return nil, errors.New("bizContent is nil")
-	}
-	userId := e.BizContent.FromUserId
-	//TODO
+func (e AlipayChatTextExecutor) Execute() string {
 
-	return nil, nil
+	return ""
 }
